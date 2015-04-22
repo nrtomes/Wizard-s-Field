@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class addForceOnTriggerEnter : MonoBehaviour {
+public class addForceOnTriggerEnterAxe : MonoBehaviour {
 
 	public ForceMode forceMode;
 	public float forceStrength = 20.0f;
@@ -10,6 +10,11 @@ public class addForceOnTriggerEnter : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) 
 	{
+		if(other.attachedRigidbody)
+		{
 		other.attachedRigidbody.AddExplosionForce (forceStrength, transform.position, radius, upwardsModifier, forceMode);
+		Debug.Log(other.name);
+		}
+		Destroy (gameObject);
 	}
 }
